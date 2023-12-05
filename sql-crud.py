@@ -116,16 +116,76 @@ abdullah_alakel = Programmer(
 
 
 
-# Add each instance of our programmers to our session
-session.add(ada_lovelace)
-session.add(grace_hopper)
-session.add(margaret_hamilton)
-session.add(bill_gates)
-session.add(tim_berners_lee)
-session.add(abdullah_alakel)
 
-# Commit our session to the database
-session.commit()
+########################################################### 1
+# Add each instance of our programmers to our session
+# session.add(ada_lovelace)
+# session.add(grace_hopper)
+# session.add(margaret_hamilton)
+# session.add(bill_gates)
+# session.add(tim_berners_lee)
+# session.add(abdullah_alakel)
+
+
+# # Commit our session to the database 
+# session.commit()
+
+
+
+######################################################### 2 
+# Updating single record
+# programmer = session.query(Programmer).filter_by(id=7).first()    # if you don't use .first() method so must use for loop to iterate on the records
+# ## Here define which column that we want to update
+# programmer.famous_for = "World President"
+
+
+# # # Commit our session to the database 
+# session.commit()
+
+
+
+# Updating Multiple records     ## I have issue it didn't update the multiple records must check it again later
+# people = session.query(Programmer)
+# for person in people:
+#     if person.gender == "F":
+#         person.gender == "Female"
+#     elif person.gender == "M":
+#         person.gender == "Male"
+#     else:
+#         print("Gender Not Defined")
+#     session.commit()
+
+
+
+
+# # Deleting a single record
+# fname = input("Enter a first name: ")
+# lname = input("Enter a last name: ")
+
+# programmer = session.query(Programmer).filter_by(first_name=fname, last_name=lname).first()
+
+# # defensive programming
+# if programmer is not None:
+#     print("Progammer Found: ", programmer.first_name + " " + programmer.last_name)
+#     confirmation = input("Are You Sure You want to Delete this Record? y/n")
+#     if confirmation.lower() == "y":
+#         session.delete(programmer)
+#         session.commit()
+#         print("Programmer has been deleted!")
+#     else:
+#         print("Pgrammer Not Deleted")
+# else:
+#     print("No records Found!!!")
+
+
+
+
+# # delete Multiple recrods
+# programmers = session.query(Programmer)
+# for programmer in programmers:
+#     session.delete(programmer)
+#     session.commit()
+
 
 
 # Query the database to find all programmers
