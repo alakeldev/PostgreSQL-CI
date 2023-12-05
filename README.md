@@ -26,3 +26,18 @@ SQLAlchemy library comes with three different layers of abstraction mean you can
 The summary of above is:
 (1) Raw SQL commands => (2) Basic Python Syntax => (3) Python Classes and Objects
 
+
+
+Class Based Models:
+Class is a collection of methods that serve a common purpose with each method having its own purpose.
+Mthods themselves should only do one thing, having only one purpose, if its starts to do too much, them you should ideally split it into different methods
+
+Examples for methods that we already used:
+
+- with db.connect() as connection:  ===>>>> connect() to connect to database
+- select_query = artist_table.select() ====>>>> select() to make a selection from the database
+- results = connection.execute(select_query) ====>>> execute() to perform  the execution of the query
+
+
+Class-Based models has many benefits such as it helps to keep your code clean and modular and you can use methods throughout an application without repeating your self   (SQLAlchemy ORM)
+

@@ -1,0 +1,115 @@
+from sqlalchemy import (
+    create_engine, Column, Float,ForeignKey, Integer, String
+)
+
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+# Executing the instructions from the "chinook" database
+db = create_engine('postgresql://postgres:abdullah@localhost:5432/chinook')
+
+# this new base class will essentially grab the metadata that is produced by our database table schema, and create a subclass to map everthing back to use here within the base variable
+base = declarative_base()
+
+
+
+
+
+
+
+# Create a class-based model for the "Artist" table
+class Artist(base):
+    __tablename__ = "Artist"
+    ArtistId =Column(Integer, primary_key=True)
+    Name = Column(String)
+
+
+#Create a class-based model for the "Album" table
+class Album(base):
+    __tablename__ = "Album"
+    AlbumId = Column(Integer, primary_key=True)
+    Title = Column(String)
+    ArtistId = Column(Integer, ForeignKey("Artist.ArtistId"))
+
+
+# Create a class-based model for the "Track" table
+class Track(base):
+    __tablename__ = "Track"
+    TrackId = Column(Integer, primary_key=True)
+    Name = Column(String)
+    AlbumId =Column(Integer, ForeignKey("Album.AlbumId"))
+    MediaTypeId = Column(Integer, primary_key=False)
+    GenreId = Column(Integer, primary_key=False)
+    Composer = Column(String)
+    Milliseconds = Column(Integer, primary_key=False)
+    Bytes = Column(Integer, primary_key= False)
+    UnitPrice = Column(Float)
+
+
+
+
+
+
+
+# instead of connecting to the database directly, we will ask for a session
+# create a new instance of sessionmaker, then point to our engine (the db)
+Session = sessionmaker(db)
+
+# open an actual session by calling the Session() subclass defind above
+session = Session()
+
+
+# Creating the database using declarative_base subclass to generate all the metadata
+base.metadata.create_all(db)
+
+
+# Query 1 - Select All records from the "Artist" Table
+# artists = session.query(Artist)  # create variable using the exesting session instence then use .query method 
+#                                 # to create the artist classs that should select everything at table within artist class we defined above
+# for artist in artists:
+#     print(artist.ArtistId, artist.Name, sep=" | ")
+
+
+# #Query 2 - Select Only the "Name" Column from the "Artist" Table
+# artists = session.query(Artist)
+# for artist in artists:
+#     print(artist.Name)
+
+
+
+# Query 3 - Select only "Queen" From the "Artist" table
+# artist = session.query(Artist).filter_by(Name="Queen").first()
+# # above using .filter_by() method to filter the selection and .first() method to give us the first item from the query just in case more than one result comes back
+# print(artist.ArtistId, artist.Name, sep=" | ")
+
+
+
+# # Query 4 - Select only by "AristId" 51 from the "Artist" table
+# artist = session.query(Artist).filter_by(ArtistId=51).first()
+# # above using .filter_by() method to filter the selection and .first() method to give us the first item from the query just in case more than one result comes back
+# print(artist.ArtistId, artist.Name, sep=" | ")
+
+
+
+#Query 5 - Select only the albums with "Artistid" 51 on the "Album" table
+# albums = session.query(Album).filter_by(ArtistId=51)
+# for album in albums:
+#     print(album.AlbumId, album.Title, album.ArtistId, sep=" | ")
+
+
+# Query 6 - Select all tracker where the composer is "Queen" from the "Track" table
+
+tracks = session.query(Track).filter_by(Composer="Queen")
+for track in tracks:
+    print(
+        track.TrackId,
+        track.Name,
+        track.AlbumId,
+        track.MediaTypeId,
+        track.GenreId,
+        track.Composer,
+        track.Milliseconds,
+        track.Bytes,
+        track.UnitPrice,
+        sep=" | "
+    )
