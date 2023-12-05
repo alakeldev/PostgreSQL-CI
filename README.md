@@ -46,3 +46,12 @@ Class-Based models has many benefits such as it helps to keep your code clean an
 Important to know inside SQlAlchemy the difference between 
 Expression Language: SQLAlchemy's core component Focus on tables (sql-expression.py)
 ORM: SQLAlchemy's full ORM class based models (sql-orm.py)
+
+
+
+
+CRUD Functionality: Using ORM
+CREATE
+READ
+UPDATE
+DELETE
