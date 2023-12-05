@@ -1,39 +1,28 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+- POSTGRES
 
-Welcome,
+- PSYCOPG2 python (library to connect python with postgres)
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+- PYTHONIC method when working with postgres using something called ORM
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+ORM = Object Relational Mapping => Method to query and manupulate data from data base using Objects
 
-## Codeanywhere Reminders
+Object => the object that you use from the programming language => python
+Relational => the relational database that is being used => PostgreSQL
+Mapping => the bridge between Python object and the tables within the databas, mapping the two together
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+** The most Popular ORM libraries when working with Python are the Django ORM and SQLAlchemy connecting with PostgreSQL
 
-`python3 -m http.server`
+- Django includes its own ORM which is extremely popular but cannot be decoupled from the Django framework to be used on its own
+- SQLAlchemy is build to be framework agnostic, and so can therefore be used on its own
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+Some of the best reasons to use SQLAlchemy isclude having cleaner code, the logic is simple and your code is more secure than using raw SQL commands.
+SQLAlchemy library comes with three different layers of abstraction mean you can choose the level of support necessary for your application:
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+- 1 The lowest Layer of abstraction is simply use SQLAlchemy's engine component in order to execute raw SQL 
+- 2 The middle Layer of abstraction uses SQLAlchemy's Expression language to build SQL statements in more PYthonic way instead of relying purely on thos raw strings 
+- 3 The highest Layer of abstraction uses SQLAlchemy's full ORM capabilites, allowing us to make use of python classes and objects, instead of using database tables and connections
 
-`http_server`
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+The summary of above is:
+(1) Raw SQL commands => (2) Basic Python Syntax => (3) Python Classes and Objects
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
-
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
----
-
-Happy coding!
