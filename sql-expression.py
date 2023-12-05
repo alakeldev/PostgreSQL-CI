@@ -64,7 +64,7 @@ with db.connect() as connection:
     # select_query = album_table.select().where(album_table.c.ArtistId == 51)
 
     # Query 6 - Select all tracker where the composer is "Queen" from the "Track" table
-    select_query = track_table.select().where(track_table.c.Composer == "Queen")  ## here there is and error you mmust search about it to know why !!!!!!
+    # select_query = track_table.select().where(track_table.c.Composer == "Queen")  ## here there is and error you mmust search about it to know why !!!!!!
 
 
 
