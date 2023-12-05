@@ -55,3 +55,19 @@ CREATE
 READ
 UPDATE
 DELETE
+
+
+
+
+
+
+to update the pip on my machine:
+open the CLI and write below:
+python -m pip install --upgrade pip
+
+Important note to understand:
+    
+        the difference between {%%} and {{}} 
+        {{}} contain an expression which is outputting something either onto the screen or in this case in to our href
+        {%%} for statments that control the flow of our template such as a for loopm if statement of this block element
+   
